@@ -57,12 +57,12 @@ body{
     background: rgb(230, 23, 62);
 }
 .wc-day-row{
-    padding: 10px 0px;
+    padding: 10px 0px ;
     background: rgba(0, 0, 0, 0.09);
     color: #fff;
     width: 100%;
-    float: left;
     font-size: 18px;
+    text-align: center;
 }
 .wc-date-row{
     display: inline-block;
@@ -152,6 +152,7 @@ body{
 	width:50%;
     font-size: 18px;
     line-height: 35px;
+	text-align: center;
 }
 .wc-next{
 	float: right;
@@ -229,6 +230,7 @@ body{
 }
 .months-view > span, .years-list-view > span{
     display: inline-block;
+    text-align: center;
     width: 25%;
     padding: 25px 0px;
     cursor: pointer;
@@ -243,6 +245,7 @@ body{
     padding: 85px 0px;
     cursor: pointer;
     font-size: 52px;
+    text-align: center;
 }
 .years-view > .prev:hover, .years-view > .next:hover{
     color: #ccc;
@@ -281,7 +284,6 @@ body{
         left: 0;
     }
     .wc-day-row{
-        padding: 5px 0px;
         font-size: 14px;
     }
     .wc-date-row{
@@ -307,7 +309,7 @@ body{
         line-height: 28px;
     }
     .wc-prev, .wc-next{
-        font-size: 18px;
+        font-size: 20px;
     }
     .wc-details{
         padding: 10px 0px 10px;
