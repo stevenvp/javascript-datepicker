@@ -1,17 +1,6 @@
 (function (window) {
     'use strict';
 
-    // var cal_days_labels = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
-    // var cal_full_days_lables = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-
-    // these are human-readable month name labels, in order
-    // var cal_months_labels = ['January', 'February', 'March', 'April',
-    //     'May', 'June', 'July', 'August', 'September',
-    //     'October', 'November', 'December'];
-    // var cal_months_labels_short = ['JAN', 'FEB', 'MAR', 'APR',
-    //     'MAY', 'JUN', 'JUL', 'AUG', 'SEP',
-    //     'OCT', 'NOV', 'DEC'];
-
     // these are labels for the days of the week
     var cal_days_labels = [],
         cal_full_days_lables = [],
@@ -19,9 +8,6 @@
         // these are human-readable month name labels, in order
         cal_months_labels = [],
         cal_months_labels_short = [];
-
-
-
 
     // these are the days of the week for each month, in order
     var cal_days_in_month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
@@ -54,7 +40,6 @@
     };
 
     function WinkelCalendar(options) {
-        console.log('init')
         this.defaults = {
             defaultDate: new Date(),
             bigBanner: true,
@@ -72,8 +57,6 @@
         var opts = this.options;
 
         moment.locale(this.options.language);
-
-        console.log( moment.weekdaysMin())
 
         cal_days_labels = [];
         cal_full_days_lables = [];
@@ -329,7 +312,8 @@
             self.el.bigBanner.setAttribute('class', 'wc-banner');
             self.el.bigBanner.dayRow = document.createElement('div');
             self.el.bigBanner.dayRow.setAttribute('class', 'wc-day-row');
-            self.el.bigBanner.dayRow.textContent = cal_full_days_lables[self.date.getDay()];
+            self.el.bigBanner.dayRow.textContent = cal_full_days_lables[moment(self.date).weekday()];
+
             self.el.bigBanner.appendChild(self.el.bigBanner.dayRow);
 
 
@@ -393,7 +377,6 @@
 
             self.el.bigBanner.appendChild(self.el.bigBanner.monthAndYear);
             self.el.calendarPopup.appendChild(self.el.bigBanner);
-            console.log(self);
         }
         self.el.headerDetails = document.createElement('div');
         self.el.headerDetails.setAttribute('class', 'wc-details');
@@ -533,7 +516,7 @@
     }
     WinkelCalendar.prototype.updateHeader = function () {
         if (this.options.bigBanner) {
-            this.el.bigBanner.dayRow.textContent = cal_full_days_lables[this.date.getDay()];
+            this.el.bigBanner.dayRow.textContent = cal_full_days_lables[moment(this.date).weekday()];
             this.el.bigBanner.monthHeaderName.textContent = cal_months_labels_short[this.date.getMonth()];
             this.el.bigBanner.dateRow.textContent = this.date.getDate() < 10 ? ("0" + this.date.getDate()) : this.date.getDate();
             this.el.bigBanner.yearVal.textContent = this.date.getFullYear();
@@ -560,7 +543,6 @@
             self.date.setMonth(self.date.getMonth() - 1);
         }
 
-        console.log(this.date);
         self.updateHeader();
         self.destroyDaysTable();
         self.createDaysView();
