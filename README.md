@@ -34,6 +34,7 @@ var cal = new WinkelCalendar({
 		container: 'cuppaDatePickerContainer',
 		bigBanner: true,
 		defaultDate: '2016-1-12',
+		language: 'nl',
 		format : "DD-MM-YYYY",
 		onSelect : onDateChange	
 });	
